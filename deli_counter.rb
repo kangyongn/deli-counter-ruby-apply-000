@@ -15,7 +15,7 @@ def line (queue)
     while i < queue.length
       
       # string concatenation within while loop, i + 1 for position correction, queue[i] for iterating through names in array.
-      string = string + " #{i + 1}." + " #{queue[i]}"
+      string += " #{i + 1}. #{queue[i]}"
       
       i += 1
     end
@@ -26,13 +26,28 @@ def line (queue)
 
 end
 
+take_a_number(queue) -> 1 
+take_a_number(queue) -> 2 
+now_serving(queue) -> now serving 1 
+now_serving(queue) -> now serving 2 
+take_a_number(queue) -> 3
+
+# global variable.
+i = 1
+
+def take_a_number (queue)
+  if i < queue.length
+    
+  i += 1
+end
+  
+
 def take_a_number (queue, name)
   
-  puts "Welcome, #{name}. You are number #{queue.length + 1} in line."
-  
-  # person joining the end of the line.
   queue.push(name)
-
+  
+  puts "Welcome, #{name}. You are number #{queue.length} in line."
+  
 end
 
 def now_serving (queue)
@@ -43,10 +58,8 @@ def now_serving (queue)
   else
     
     # call out the next person in line.
-    puts "Currently serving #{queue.first}."
+    puts "Currently serving #{queue.shift}."
     
-    # remove them from the front.
-    queue.shift
   end
   
 end
